@@ -6,15 +6,17 @@
   <title>{{title}}</title>
 </head>
 <body>
+  <div class="container my-5">
   <h2>{{title}}</h2>
   <br>
   <p>
     Nuevo Héroe :
-    <input type="text" #box (keyup.enter)="addHero(box.value); box.value=''" placeholder="Nombre del Héroe">
-    <input type="checkbox" id="can-fly" [(ngModel)]="canFly">
+    <input type="text" #box (keyup.enter)="addHero(box.value); box.value=''" class="form-control"  placeholder="Nombre del Héroe">
+    <br>
+    <input type="checkbox" id="can-fly"  [(ngModel)]="canFly">
     Puede volar
   </p>
-  <p><button (click)="reset()">Reset</button></p>
+  <p><button class="btn btn-warning"(click)="reset()">Reset</button></p>
   <hr>
   <h4>{{title2}} - (Filtrados)</h4>
   <div id="flyers">
@@ -29,6 +31,34 @@
       {{hero.name}}
     </div>
   </div>
+  <hr>
+  <div>
+    <p>The hero's birthday is {{ birthday | date:format}}</p>
+    <button class="btn btn-primary"(click)="toggleFormat()">Toggle Format</button>
+  </div>
+  <hr>
+  <h2>Power Boost Calculator</h2>
+  <div class="col-md-6">Numero:
+    <input [(ngModel)]="power"class="form-control"  >
+  </div>
+  <div class="col-md-6"s>Exponente:
+    <input [(ngModel)]="factor" class="form-control" >
+  </div>
+  <div class="col-md-6">
+  <p>Resultado: {{power | calculadora:factor}}</p>
+  </div>
+  <hr>
+<!--   <div>
+    <h2>Heroes from JSON File</h2>
+
+    <div *ngFor="let hero of ('assets/heroes.json' | fetch) ">
+      {{hero.name}}
+    </div>
+    <p>Heroes as JSON:
+      {{'assets/heroes.json' | fetch | json}}
+    </p>
+  </div> -->
   
+</div>
 </body>
 </html>

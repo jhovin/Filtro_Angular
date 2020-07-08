@@ -17,10 +17,19 @@ export class AppComponent {
   constructor(){
     this.heroes=[];
   }
+
+
+  power = 5;
+  factor = 1;
+
   addHero(name: String){
     name = name.trim();
     if(!name){return;}
     let hero = {name, canFly: this.canFly};
     this.heroes = this.heroes.concat(hero);
   }
+  birthday = new Date(1988, 3, 15); 
+  toggle = true; 
+  get format()   { return this.toggle ? 'shortDate' : 'fullDate';}
+  toggleFormat() { this.toggle = !this.toggle; }
 }
